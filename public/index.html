@@ -6,12 +6,39 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
   </head>
   <body>
+ 
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <ul id="people"></ul>
+    <script>
+      //Джейсон
+      //создает объект XMLHttpRequest
+      var xhttp = new XMLHttpRequest();
+      //Свойство onreadystatechange указывает функцию, которая будет выполняться каждый раз, когда изменяется статус объекта XMLHttpRequest:
+      xhttp.onreadystatechange = function() {
+        //Когда свойство readyState равно 4, а свойство status равно 200, ответ готов
+          if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(xhttp.responseText);
+            var people = response.people;
+
+            var output = '';
+            //перебор обьектов для вывода
+            for(var i = 0;i < people.length;i++){
+              output += '<li>'+people[i].name+'</li>';
+            }
+            document.getElementById('people').innerHTML = output;
+          }
+      };
+      xhttp.open("GET", "people.json", true);
+      xhttp.send();
+
+    </script>
   </body>
 </html>
