@@ -20,13 +20,13 @@
     </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn text>В корзину</v-btn>
+      <v-btn text>To Cart</v-btn>
 
       <v-btn
         color="purple"
         text
       >
-        Подробние
+        Details
       </v-btn>
 
       <v-spacer></v-spacer>

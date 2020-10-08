@@ -1,32 +1,20 @@
 <template>
   <nav>
-    <div class="menu-item"><a href="#">Главная</a></div>
-    <div class="menu-item"><a href="#">О нас</a></div>
-    <Dropdown title="Каталог" :items="ctalog" />
-    
+    <div class="menu-item"><router-link to="/">Home</router-link></div>
+    <div class="menu-item"><router-link to="/admin">Admin</router-link></div>
+    <div class="menu-item"><router-link to="/cart">Cart</router-link></div>
   </nav>
 </template>
 
 <script>
-import Dropdown from './Dropdown';
+
 
 export default {
   name: 'navbar',
   components: {
-    Dropdown
   },
   data () {
     return {
-      ctalog: [
-        {
-          title: 'Первая',
-          link: '#'
-        },
-        {
-          title: 'Вторая',
-          link:'#'
-        }
-      ]
     }
   }
 }
